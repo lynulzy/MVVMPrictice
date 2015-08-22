@@ -20,6 +20,12 @@
 		486653C21B8866C40076B1F0 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C11B8866C40076B1F0 /* MD5.m */; };
 		486653C51B8867520076B1F0 /* ZYBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C41B8867520076B1F0 /* ZYBasicModel.m */; };
 		486653C81B8867EB0076B1F0 /* ZYBasicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */; };
+		486653CF1B88841C0076B1F0 /* ZYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653CE1B88841C0076B1F0 /* ZYUser.m */; };
+		486653D21B8884490076B1F0 /* ZYLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653D11B8884490076B1F0 /* ZYLoginViewModel.m */; };
+		486653D51B8884720076B1F0 /* ZYRegistViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653D41B8884720076B1F0 /* ZYRegistViewModel.m */; };
+		486653D81B8884B00076B1F0 /* ZYBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653D71B8884B00076B1F0 /* ZYBasicViewController.m */; };
+		486653DB1B8884D20076B1F0 /* ZYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653DA1B8884D20076B1F0 /* ZYLoginViewController.m */; };
+		486653DE1B8884E30076B1F0 /* ZYRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653DD1B8884E30076B1F0 /* ZYRegistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,18 @@
 		486653C41B8867520076B1F0 /* ZYBasicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBasicModel.m; sourceTree = "<group>"; };
 		486653C61B8867EB0076B1F0 /* ZYBasicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBasicViewModel.h; sourceTree = "<group>"; };
 		486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBasicViewModel.m; sourceTree = "<group>"; };
+		486653CD1B88841C0076B1F0 /* ZYUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYUser.h; sourceTree = "<group>"; };
+		486653CE1B88841C0076B1F0 /* ZYUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYUser.m; sourceTree = "<group>"; };
+		486653D01B8884490076B1F0 /* ZYLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLoginViewModel.h; sourceTree = "<group>"; };
+		486653D11B8884490076B1F0 /* ZYLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLoginViewModel.m; sourceTree = "<group>"; };
+		486653D31B8884720076B1F0 /* ZYRegistViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYRegistViewModel.h; sourceTree = "<group>"; };
+		486653D41B8884720076B1F0 /* ZYRegistViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYRegistViewModel.m; sourceTree = "<group>"; };
+		486653D61B8884B00076B1F0 /* ZYBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBasicViewController.h; sourceTree = "<group>"; };
+		486653D71B8884B00076B1F0 /* ZYBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBasicViewController.m; sourceTree = "<group>"; };
+		486653D91B8884D20076B1F0 /* ZYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLoginViewController.h; sourceTree = "<group>"; };
+		486653DA1B8884D20076B1F0 /* ZYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLoginViewController.m; sourceTree = "<group>"; };
+		486653DC1B8884E30076B1F0 /* ZYRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYRegistViewController.h; sourceTree = "<group>"; };
+		486653DD1B8884E30076B1F0 /* ZYRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYRegistViewController.m; sourceTree = "<group>"; };
 		4A0C737ADCB269EC1435FFEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +181,7 @@
 		486653B31B8865E20076B1F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				486653CC1B8884000076B1F0 /* Login&Regist */,
 				486653C31B8867520076B1F0 /* ZYBasicModel.h */,
 				486653C41B8867520076B1F0 /* ZYBasicModel.m */,
 			);
@@ -185,8 +204,11 @@
 		486653B51B8865E20076B1F0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				486653CA1B8883770076B1F0 /* Login&Regist */,
 				486653B61B8865E20076B1F0 /* ViewController.h */,
 				486653B71B8865E20076B1F0 /* ViewController.m */,
+				486653D61B8884B00076B1F0 /* ZYBasicViewController.h */,
+				486653D71B8884B00076B1F0 /* ZYBasicViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,10 +216,42 @@
 		486653B81B8865E20076B1F0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				486653C91B8883660076B1F0 /* Login&Regist */,
 				486653C61B8867EB0076B1F0 /* ZYBasicViewModel.h */,
 				486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		486653C91B8883660076B1F0 /* Login&Regist */ = {
+			isa = PBXGroup;
+			children = (
+				486653D01B8884490076B1F0 /* ZYLoginViewModel.h */,
+				486653D11B8884490076B1F0 /* ZYLoginViewModel.m */,
+				486653D31B8884720076B1F0 /* ZYRegistViewModel.h */,
+				486653D41B8884720076B1F0 /* ZYRegistViewModel.m */,
+			);
+			path = "Login&Regist";
+			sourceTree = "<group>";
+		};
+		486653CA1B8883770076B1F0 /* Login&Regist */ = {
+			isa = PBXGroup;
+			children = (
+				486653D91B8884D20076B1F0 /* ZYLoginViewController.h */,
+				486653DA1B8884D20076B1F0 /* ZYLoginViewController.m */,
+				486653DC1B8884E30076B1F0 /* ZYRegistViewController.h */,
+				486653DD1B8884E30076B1F0 /* ZYRegistViewController.m */,
+			);
+			path = "Login&Regist";
+			sourceTree = "<group>";
+		};
+		486653CC1B8884000076B1F0 /* Login&Regist */ = {
+			isa = PBXGroup;
+			children = (
+				486653CD1B88841C0076B1F0 /* ZYUser.h */,
+				486653CE1B88841C0076B1F0 /* ZYUser.m */,
+			);
+			path = "Login&Regist";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,13 +391,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				486653C21B8866C40076B1F0 /* MD5.m in Sources */,
+				486653DE1B8884E30076B1F0 /* ZYRegistViewController.m in Sources */,
+				486653DB1B8884D20076B1F0 /* ZYLoginViewController.m in Sources */,
 				486653B91B8865E20076B1F0 /* ViewController.m in Sources */,
 				486653C51B8867520076B1F0 /* ZYBasicModel.m in Sources */,
 				486653BF1B88668D0076B1F0 /* ZSXJHTTPSession.m in Sources */,
 				486653931B88634A0076B1F0 /* AppDelegate.m in Sources */,
+				486653D21B8884490076B1F0 /* ZYLoginViewModel.m in Sources */,
 				486653901B88634A0076B1F0 /* main.m in Sources */,
 				486653C81B8867EB0076B1F0 /* ZYBasicViewModel.m in Sources */,
+				486653CF1B88841C0076B1F0 /* ZYUser.m in Sources */,
 				486653BE1B88668D0076B1F0 /* HTTPHelper.m in Sources */,
+				486653D81B8884B00076B1F0 /* ZYBasicViewController.m in Sources */,
+				486653D51B8884720076B1F0 /* ZYRegistViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

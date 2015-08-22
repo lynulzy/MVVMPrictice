@@ -8,12 +8,21 @@
 
 #import "AFHTTPSessionManager.h"
 
-typedef void (^successBlock)(NSURLSessionDataTask *task,id responseObject);
-typedef void (^failedBlcik)(NSURLSessionDataTask *task,NSError*theError);
+typedef void (^SuccessBlock) (NSURLSessionDataTask *task,id responseObject);
+typedef void (^FailedBlcok) (NSURLSessionDataTask *task,NSError*theError);
+typedef void (^NetworkChangeBlock) (AFNetworkReachabilityStatus status);
 @interface ZSXJHTTPSession : AFHTTPSessionManager
-@property (nonatomic, strong) UIActivityIndicatorView *actIndicator;
+@property (nonatomic, readwrite, strong) UIActivityIndicatorView *actIndicator;
+@property (nonatomic, readwrite, copy) NetworkChangeBlock networkChangeBlock;
+@property (nonatomic, readonly, strong) NSString *userDefineServerURL;
 + (ZSXJHTTPSession *)sharedSession;
 
-- (void)POST:(NSString *)actStr ReqParams:(NSDictionary *)params success:(successBlock) succBlc failure:(failedBlcik)failBlc;
-- (void)uploadImage:(NSDictionary *)imgDict byAct:(NSString *)theAct ReqParams:(NSDictionary *)params success:(successBlock) succBlc failure:(failedBlcik)failBlc;
+- (void)POST: (NSString *)actStr ReqParams: (NSDictionary *) params
+     success: (SuccessBlock) succBlc
+     failure: (FailedBlcok) failBlc;
+- (void)uploadImage:(NSDictionary *) imgDict
+              byAct:(NSString *) theAct
+          ReqParams:(NSDictionary *) params
+            success:(SuccessBlock) succBlc
+            failure:(FailedBlcok) failBlc;
 @end

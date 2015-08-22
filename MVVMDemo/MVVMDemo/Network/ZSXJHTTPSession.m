@@ -38,7 +38,9 @@ static NSString *serverURL = @"http://121.199.38.85/logistics_app/api.php";
         __weak typeof (self) weakSelf = self;
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             __strong typeof (weakSelf) strongSelf = weakSelf;
-            strongSelf.networkChangeBlock(status);
+            if (strongSelf.networkChangeBlock) {
+                strongSelf.networkChangeBlock(status);
+            }
             switch (status) {
                 case AFNetworkReachabilityStatusNotReachable: {
                     //网络不可用
