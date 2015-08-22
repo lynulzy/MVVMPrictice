@@ -16,7 +16,7 @@
 @end
 
 @implementation ZSXJHTTPSession
-static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
+static NSString *serverURL = @"http://121.199.38.85/logistics_app/api.php";
 @synthesize actIndicator;
 @synthesize sessionManager;
 + (ZSXJHTTPSession *)sharedSession {
@@ -24,7 +24,7 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        shareaSession = [[ZSXJHTTPSession alloc] initWithBaseURL:[NSURL URLWithString:baseURL]
+        shareaSession = [[ZSXJHTTPSession alloc] initWithBaseURL:[NSURL URLWithString:serverURL]
                                             sessionConfiguration:nil];
     });
     return shareaSession;
@@ -72,7 +72,8 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
     NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params
                                                                  actParam:actStr];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager POST:baseURL
+    NSString *postURL = _userDefineServerURL ? _userDefineServerURL : serverURL;
+    [sessionManager POST:postURL
        parameters:postData
           success:^(NSURLSessionDataTask *task, id responseObject) {
               [indicatorManager decrementActivityCount];
@@ -91,7 +92,8 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
         //上传图片
     NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params
                                                                  actParam:theAct];
-    [sessionManager POST:baseURL
+    NSString *postURL = _userDefineServerURL ? _userDefineServerURL : serverURL;
+    [sessionManager POST:postURL
               parameters:postData
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     

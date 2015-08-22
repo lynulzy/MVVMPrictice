@@ -10,8 +10,11 @@
 #import "ZSXJHTTPSession.h"
 @implementation ZYBasicViewModel
 - (void)networkState:(NetworkBlock)theNetWorkBlock serverURL:(NSString *)serverURL {
+    if (serverURL) {
+        
+    }
     ZSXJHTTPSession *sessionManager = [ZSXJHTTPSession sharedSession];
-    
+    sessionManager.networkChangeBlock = theNetWorkBlock;
 }
 - (void)setBlock:(ResultBlock)theReturnBlock block:(ErrorBlock)theErrorBlock block:(FailureBlock)theFailureBlock {
     _returnBlock  = theReturnBlock;

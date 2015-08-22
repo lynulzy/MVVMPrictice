@@ -14,6 +14,7 @@ typedef void (^NetworkChangeBlock) (AFNetworkReachabilityStatus status);
 @interface ZSXJHTTPSession : AFHTTPSessionManager
 @property (nonatomic, readwrite, strong) UIActivityIndicatorView *actIndicator;
 @property (nonatomic, readwrite, copy) NetworkChangeBlock networkChangeBlock;
+@property (nonatomic, readonly, strong) NSString *userDefineServerURL;
 + (ZSXJHTTPSession *)sharedSession;
 
 - (void)POST: (NSString *)actStr ReqParams: (NSDictionary *) params
