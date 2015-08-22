@@ -19,6 +19,7 @@
 		486653BF1B88668D0076B1F0 /* ZSXJHTTPSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653BD1B88668D0076B1F0 /* ZSXJHTTPSession.m */; };
 		486653C21B8866C40076B1F0 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C11B8866C40076B1F0 /* MD5.m */; };
 		486653C51B8867520076B1F0 /* ZYBasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C41B8867520076B1F0 /* ZYBasicModel.m */; };
+		486653C81B8867EB0076B1F0 /* ZYBasicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		486653C11B8866C40076B1F0 /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
 		486653C31B8867520076B1F0 /* ZYBasicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBasicModel.h; sourceTree = "<group>"; };
 		486653C41B8867520076B1F0 /* ZYBasicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBasicModel.m; sourceTree = "<group>"; };
+		486653C61B8867EB0076B1F0 /* ZYBasicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBasicViewModel.h; sourceTree = "<group>"; };
+		486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBasicViewModel.m; sourceTree = "<group>"; };
 		4A0C737ADCB269EC1435FFEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +194,8 @@
 		486653B81B8865E20076B1F0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				486653C61B8867EB0076B1F0 /* ZYBasicViewModel.h */,
+				486653C71B8867EB0076B1F0 /* ZYBasicViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				486653BF1B88668D0076B1F0 /* ZSXJHTTPSession.m in Sources */,
 				486653931B88634A0076B1F0 /* AppDelegate.m in Sources */,
 				486653901B88634A0076B1F0 /* main.m in Sources */,
+				486653C81B8867EB0076B1F0 /* ZYBasicViewModel.m in Sources */,
 				486653BE1B88668D0076B1F0 /* HTTPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
