@@ -7,7 +7,15 @@
 //
 
 #import "ZYBasicViewModel.h"
-
+#import "ZSXJHTTPSession.h"
 @implementation ZYBasicViewModel
-
+- (void)networkState:(NetworkBlock)theNetWorkBlock serverURL:(NSString *)serverURL {
+    ZSXJHTTPSession *sessionManager = [ZSXJHTTPSession sharedSession];
+    
+}
+- (void)setBlock:(ResultBlock)theReturnBlock block:(ErrorBlock)theErrorBlock block:(FailureBlock)theFailureBlock {
+    _returnBlock  = theReturnBlock;
+    _errorBlock   = theErrorBlock;
+    _failureBlock = theFailureBlock;
+}
 @end

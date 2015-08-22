@@ -29,16 +29,20 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
     });
     return shareaSession;
 }
--(instancetype)initWithBaseURL:(NSURL *)url sessionConfiguration:(NSURLSessionConfiguration *)configuration {
+-(instancetype)initWithBaseURL: (NSURL *) url sessionConfiguration: (NSURLSessionConfiguration *) configuration {
     self = [super initWithBaseURL:url sessionConfiguration:configuration];
     if (self) {
         sessionManager = [AFHTTPSessionManager manager];
         actIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //TODO  此处添加提示（全局通知），当网络状况发生改变的时候告知用户
+        __weak typeof (self) weakSelf = self;
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            __strong typeof (weakSelf) strongSelf = weakSelf;
+            strongSelf.networkChangeBlock(status);
             switch (status) {
                 case AFNetworkReachabilityStatusNotReachable: {
                     //网络不可用
+                    [strongSelf.operationQueue setSuspended:YES];
                     break;
                 }
                 case AFNetworkReachabilityStatusReachableViaWWAN: {
@@ -50,20 +54,23 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
                     break;
                 }
                 default:
+                    [strongSelf.operationQueue setSuspended:NO];
                     break;
             }
         }];
+        [self.reachabilityManager startMonitoring];
     }
     return self;
 }
-- (void)POST:(NSString *)actStr ReqParams:(NSDictionary *)params success:(successBlock)succBlc failure:(failedBlcik)failBlc {
+- (void)POST: (NSString *) actStr ReqParams: (NSDictionary *) params success: (SuccessBlock) succBlc failure: (FailedBlcok) failBlc {
     //Show network indicator in status bar.
     AFNetworkActivityIndicatorManager *indicatorManager = [AFNetworkActivityIndicatorManager sharedManager];
     indicatorManager.enabled = YES;
     [indicatorManager incrementActivityCount];
     
     //Contruct the post Params
-    NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params actParam:actStr];
+    NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params
+                                                                 actParam:actStr];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [sessionManager POST:baseURL
        parameters:postData
@@ -76,9 +83,14 @@ static NSString *baseURL = @"http://121.199.38.85/logistics_app/api.php";
           }];
 }
 
-- (void)uploadImage:(NSDictionary *)imgDict byAct:(NSString *)theAct ReqParams:(NSDictionary *)params success:(successBlock)succBlc failure:(failedBlcik)failBlc {
+- (void)uploadImage: (NSDictionary *) imgDict
+              byAct: (NSString *) theAct
+          ReqParams: (NSDictionary *) params
+            success: (SuccessBlock) succBlc
+            failure: (FailedBlcok) failBlc {
         //上传图片
-    NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params actParam:theAct];
+    NSDictionary *postData = [[[HTTPHelper alloc] init] constructPOSTDict:params
+                                                                 actParam:theAct];
     [sessionManager POST:baseURL
               parameters:postData
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
