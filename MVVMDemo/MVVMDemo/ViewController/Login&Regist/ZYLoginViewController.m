@@ -20,7 +20,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if ([self.view hasAmbiguousLayout]) {
+//        NSArray *conflict = [self.view constraintsAffectingLayoutForAxis:<#(UILayoutConstraintAxis)#>]
+    }
     loginViewModel_ = [[ZYLoginViewModel alloc] init];
     [loginViewModel_ setBlock:^(id processResult) {
                             //成功返回
@@ -28,7 +30,10 @@
                         }
                        block:^(id errorMessage) {
                            //失败信息
-                           
+                           if([errorMessage isKindOfClass:[NSString class]]) {
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorMessage message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                               [alert show];
+                           }
                        }
                        block:^(NSString *networkMessage) {
                            //网络请求失败
@@ -41,16 +46,18 @@
     if (userNameTF.text.length != 0 && passwordTF.text.length != 0) {
         if ([loginViewModel_ checkTheUserInputNameString:userNameTF.text passwordString:passwordTF.text]) {
             [loginViewModel_ requestLogin];
+            return;
         }
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名和密码，然后登录"
-                                                    message:nil
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles: nil];
-    [alert show];
-    return;
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名和密码，然后登录"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
 }
 
 #pragma mark - UserInput & TextFieldDelegate

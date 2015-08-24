@@ -8,6 +8,10 @@
 
 #import "ZYBasicViewModel.h"
 
+typedef NS_ENUM(NSInteger, LoginErrorMessage) {
+    ZYLoginInputErr,
+};
+
 @interface ZYLoginViewModel : ZYBasicViewModel
 /**
  *  @author lzy, 15-08-24 09:08:53
