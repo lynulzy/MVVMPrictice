@@ -37,6 +37,9 @@
 //          failure:^(NSURLSessionDataTask *task, NSError *theError) {
 //              NSLog(@"failed %@",theError);
 //          }];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ZYLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"com.lynulzy.LoginViewController"];
+    [self presentViewController:loginViewController animated:YES completion:nil];
 }
 
 @end

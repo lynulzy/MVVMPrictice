@@ -7,7 +7,85 @@
 //
 
 #import "ZYLoginViewController.h"
+#import "ZYLoginViewModel.h"
 
-@implementation ZYLoginViewController
+#define TAG_USERNAME_TF     1001
+#define TAG_PASSWORD_TF     1002
 
+@interface ZYLoginViewController ()<UITextFieldDelegate>
+
+@end
+@implementation ZYLoginViewController {
+    ZYLoginViewModel *loginViewModel_;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    loginViewModel_ = [[ZYLoginViewModel alloc] init];
+    [loginViewModel_ setBlock:^(id processResult) {
+                            //成功返回
+        
+                        }
+                       block:^(id errorMessage) {
+                           //失败信息
+                           
+                       }
+                       block:^(NSString *networkMessage) {
+                           //网络请求失败
+                       }];
+}
+#pragma mark - UserAction
+- (IBAction)loginButtonClicked:(id)sender {
+    UITextField *userNameTF = (UITextField *)[self.view viewWithTag:TAG_USERNAME_TF];
+    UITextField *passwordTF = (UITextField *)[self.view viewWithTag:TAG_PASSWORD_TF];
+    if (userNameTF.text.length != 0 && passwordTF.text.length != 0) {
+        if ([loginViewModel_ checkTheUserInputNameString:userNameTF.text passwordString:passwordTF.text]) {
+            [loginViewModel_ requestLogin];
+        }
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名和密码，然后登录"
+                                                    message:nil
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles: nil];
+    [alert show];
+    return;
+}
+
+#pragma mark - UserInput & TextFieldDelegate
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField.tag == TAG_PASSWORD_TF) {
+//        if (loginViewModel_) {
+//            NSString *userNameString = [(UITextField *)[self.view viewWithTag:TAG_USERNAME_TF] text];
+//            [loginViewModel_ checkTheUserInputNameString:userNameString
+//                                          passwordString:textField.text];
+//        }
+    }
+    else if (textField.tag == TAG_USERNAME_TF) {
+        UITextField *passwordTF = (UITextField *)[self.view viewWithTag:TAG_PASSWORD_TF];
+        [passwordTF becomeFirstResponder];
+    }
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField.tag == TAG_USERNAME_TF) {
+        UITextField *passwordTF = (UITextField *)[self.view viewWithTag:TAG_PASSWORD_TF];
+        [passwordTF becomeFirstResponder];
+    }
+    else if (textField.tag == TAG_PASSWORD_TF) {
+        [self.view endEditing:YES];
+        if (loginViewModel_) {
+            UITextField *userNameTF = (UITextField *)[self.view viewWithTag:TAG_USERNAME_TF];
+            BOOL verySucc = [loginViewModel_ checkTheUserInputNameString:userNameTF.text
+                                          passwordString:textField.text];
+            if (verySucc) {
+                [loginViewModel_ requestLogin];
+            }
+        }
+    }
+    return YES;
+}
 @end
