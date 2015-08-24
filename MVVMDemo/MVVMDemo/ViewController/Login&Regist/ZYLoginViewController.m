@@ -24,8 +24,18 @@
 //        NSArray *conflict = [self.view constraintsAffectingLayoutForAxis:<#(UILayoutConstraintAxis)#>]
     }
     loginViewModel_ = [[ZYLoginViewModel alloc] init];
+    __weak typeof (self) weakSelf = self;
     [loginViewModel_ setBlock:^(id processResult) {
                             //成功返回
+        __strong typeof (weakSelf) strongSelf = weakSelf;
+        if (processResult == ZYLoginReturnSucc_DismissView) {
+            [strongSelf.navigationController dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"页面消失");
+            }];
+        }
+        else {
+            //Handle the data;
+        }
         
                         }
                        block:^(id errorMessage) {
@@ -45,7 +55,7 @@
     UITextField *passwordTF = (UITextField *)[self.view viewWithTag:TAG_PASSWORD_TF];
     if (userNameTF.text.length != 0 && passwordTF.text.length != 0) {
         if ([loginViewModel_ checkTheUserInputNameString:userNameTF.text passwordString:passwordTF.text]) {
-            [loginViewModel_ requestLogin];
+            [loginViewModel_ requestLoginInView:self.view];
             return;
         }
     }
@@ -89,7 +99,7 @@
             BOOL verySucc = [loginViewModel_ checkTheUserInputNameString:userNameTF.text
                                           passwordString:textField.text];
             if (verySucc) {
-                [loginViewModel_ requestLogin];
+                [loginViewModel_ requestLoginInView:self.view];
             }
         }
     }

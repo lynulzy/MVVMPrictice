@@ -17,6 +17,7 @@
 
 @implementation ZSXJHTTPSession
 static NSString *serverURL = @"http://121.199.38.85/logistics_app/api.php";
+//static NSString *serverURL = @"http://121.199.38.85/guancheyi/api.php";
 @synthesize actIndicator;
 @synthesize sessionManager;
 + (ZSXJHTTPSession *)sharedSession {

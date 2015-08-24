@@ -11,7 +11,9 @@
 typedef NS_ENUM(NSInteger, LoginErrorMessage) {
     ZYLoginInputErr,
 };
-
+typedef NS_ENUM(NSInteger, LoginReturnMessage) {
+    ZYLoginReturnSucc_DismissView,
+};
 @interface ZYLoginViewModel : ZYBasicViewModel
 /**
  *  @author lzy, 15-08-24 09:08:53
@@ -22,12 +24,14 @@ typedef NS_ENUM(NSInteger, LoginErrorMessage) {
  *  @param password 要检查的密码
  */
 - (BOOL)checkTheUserInputNameString: (NSString *) userName passwordString: (NSString *) password;
-- (void)jumpToRegist;
+//- (void)jumpToRegistNav:(UINavigationController *)theNavgation;
 /**
- *  @author lzy, 15-08-24 09:08:05
+ *  @author lzy, 15-08-24 16:08:24
  *
- *  @brief  验证用户输入之后的成功数据直接保存，请求时使用历史数据
+ *  @brief  发起登录请求
+ *
+ *  @param requestView 在此页面发送请求，并且显示HUD
  */
-- (void)requestLogin;
+- (void)requestLoginInView:(UIView *)requestView;
 
 @end
