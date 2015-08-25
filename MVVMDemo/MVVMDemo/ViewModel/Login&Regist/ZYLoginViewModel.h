@@ -12,7 +12,7 @@ typedef NS_ENUM(NSInteger, LoginErrorMessage) {
     ZYLoginInputErr,
 };
 typedef NS_ENUM(NSInteger, LoginReturnMessage) {
-    ZYLoginReturnSucc_DismissView,
+    ZYLoginReturnSucc_DismissView = 0,
 };
 @interface ZYLoginViewModel : ZYBasicViewModel
 /**

@@ -28,15 +28,34 @@
     NSLog(@"Fake 正在发起请求");
     ZSXJHTTPSession *sessionManager = [ZSXJHTTPSession sharedSession];
     NSString *actString = @"submit_user_login";
-    NSDictionary *paramsDict = @{@"mobile" : userName_, @"password" : password_};
+    NSDictionary *paramsDict = @{@"mobile" : userName_,
+                                 @"password" : password_,
+                                 @"deviceid" : @"111111",
+                                 @"pingtai" : @"2",
+                                 @"ext" : @"iPhone 5s",
+                                 @"utm" : @"appstore",
+                                 @"ver" : @"1.0"};
     __weak typeof (self) weakSelf = self;
     [sessionManager POST:actString
                ReqParams:paramsDict
                  success:^(NSURLSessionDataTask *task, id responseObject) {
                      [MBProgressHUD hideHUDForView:requestView animated:YES];
-                     NSLog(@"登录成功，HUD停止");
                      __strong typeof(weakSelf) strongSelf = weakSelf;
-                     strongSelf.returnBlock(ZYLoginReturnSucc_DismissView);
+                     NSDictionary *resultDict;
+                     if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                         resultDict = (NSDictionary *)responseObject;
+                     }
+                     else {
+                         return ;
+                     }
+                     if ([[resultDict objectForKey:@"error"] isEqual:@(0)]) {
+                         //请求成功，
+                         strongSelf.returnBlock(@(ZYLoginReturnSucc_DismissView));
+                     }
+                     else {
+                         //数据出错
+                         strongSelf.errorBlock ([resultDict objectForKey:@"message"]);//将服务器返回错误信息返回
+                     }
                  }
                  failure:^(NSURLSessionDataTask *task, NSError *theError) {
                      [MBProgressHUD hideHUDForView:requestView animated:YES];

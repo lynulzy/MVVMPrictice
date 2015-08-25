@@ -28,7 +28,7 @@
     [loginViewModel_ setBlock:^(id processResult) {
                             //成功返回
         __strong typeof (weakSelf) strongSelf = weakSelf;
-        if (processResult == ZYLoginReturnSucc_DismissView) {
+        if ([processResult isEqual: @(ZYLoginReturnSucc_DismissView)]){
             [strongSelf.navigationController dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"页面消失");
             }];
