@@ -16,7 +16,7 @@
     ZSXJHTTPSession *sessionManager = [ZSXJHTTPSession sharedSession];
     sessionManager.networkChangeBlock = theNetWorkBlock;
 }
-- (void)setBlock:(ResultBlock)theReturnBlock block:(ErrorBlock)theErrorBlock block:(FailureBlock)theFailureBlock {
+- (void)setBlockReturnBlock:(ResultBlock)theReturnBlock errorBlock:(ErrorBlock)theErrorBlock failureBlock:(FailureBlock)theFailureBlock {
     _returnBlock  = theReturnBlock;
     _errorBlock   = theErrorBlock;
     _failureBlock = theFailureBlock;

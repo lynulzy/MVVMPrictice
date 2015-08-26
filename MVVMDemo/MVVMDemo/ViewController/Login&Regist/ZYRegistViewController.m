@@ -24,7 +24,7 @@
     
     registModel_ = [[ZYRegistViewModel alloc] init];
     __weak typeof(self) weakSelf = self;
-    [registModel_ setBlock:^(id processResult) {
+    [registModel_ setBlockReturnBlock:^(NSInteger type, id processResult) {
         //处理成功的数据
         __strong typeof(weakSelf) strongSelf = weakSelf;
         //发送验证码成功
@@ -37,12 +37,13 @@
                                                                 completion:nil];
         }
     }
-                     block:^(id errorMessage) {
-                         //处理错误信息
-                         NSLog(@"error %@",errorMessage);
-                     } block:^(NSString *networkMessage) {
-                         //网络请求失败
-                     }];
+                           errorBlock:^(NSInteger type, id errorMessage) {
+                               //处理错误信息
+                               NSLog(@"error %@",errorMessage);
+                           }
+                         failureBlock:^(NSString *networkMessage) {
+                             
+                         }];
 }
 
 #pragma mark - User Action

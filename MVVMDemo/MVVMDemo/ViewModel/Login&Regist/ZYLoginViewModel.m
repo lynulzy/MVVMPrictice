@@ -20,7 +20,7 @@
         password_ = password;
         return YES;
     }
-    self.errorBlock(@"您输入的超过限制，请修改后重新输入");
+    self.errorBlock(ZYLoginInputErr ,@"您输入的超过限制，请修改后重新输入");
     return NO;
 }
 
@@ -50,11 +50,11 @@
                      }
                      if ([[resultDict objectForKey:@"error"] isEqual:@(0)]) {
                          //请求成功，
-                         strongSelf.returnBlock(@(ZYLoginReturnSucc_DismissView));
+                         strongSelf.returnBlock(ZYLoginRequestSucc,@"请求成功");
                      }
                      else {
                          //数据出错
-                         strongSelf.errorBlock ([resultDict objectForKey:@"message"]);//将服务器返回错误信息返回
+                         strongSelf.errorBlock (ZYLoginServerErr, [resultDict objectForKey:@"message"]);//将服务器返回错误信息返回
                      }
                  }
                  failure:^(NSURLSessionDataTask *task, NSError *theError) {

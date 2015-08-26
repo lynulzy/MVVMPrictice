@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>217C414F-8087-4688-B77D-47AB7E296A41</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MVVMDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F995A2B63669AAE8EB6811E58012F4FC98A7113D</key>
+		<string>https://github.com/lynulzy/MVVMPrictice.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MVVMDemo/MVVMDemo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F995A2B63669AAE8EB6811E58012F4FC98A7113D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lynulzy/MVVMPrictice.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F995A2B63669AAE8EB6811E58012F4FC98A7113D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F995A2B63669AAE8EB6811E58012F4FC98A7113D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MVVMPrictice</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -8,11 +8,22 @@
 
 #import "ZYBasicViewModel.h"
 
-typedef NS_ENUM(NSInteger, LoginErrorMessage) {
-    ZYLoginInputErr,
+/**
+ *  @author lzy, 15-08-25 23:08:19
+ *
+ *  @brief  标识着在ViewModel中出现错误的逻辑，可以根据错误类型在ViewController中作相应的提示
+ */
+typedef NS_ENUM(NSInteger, LoginErrorMessage){
+    /**
+     *  @author lzy, 15-08-25 23:08:19
+     *
+     *  用户输入错误
+     */
+    ZYLoginInputErr = 1,
+    ZYLoginServerErr
 };
 typedef NS_ENUM(NSInteger, LoginReturnMessage) {
-    ZYLoginReturnSucc_DismissView = 0,
+    ZYLoginRequestSucc = 1,
 };
 @interface ZYLoginViewModel : ZYBasicViewModel
 /**

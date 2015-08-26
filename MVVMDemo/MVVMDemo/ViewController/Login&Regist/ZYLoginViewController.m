@@ -25,10 +25,10 @@
     }
     loginViewModel_ = [[ZYLoginViewModel alloc] init];
     __weak typeof (self) weakSelf = self;
-    [loginViewModel_ setBlock:^(id processResult) {
-                            //成功返回
+    [loginViewModel_ setBlockReturnBlock:^(NSInteger type, id processResult) {
+        //成功返回
         __strong typeof (weakSelf) strongSelf = weakSelf;
-        if ([processResult isEqual: @(ZYLoginReturnSucc_DismissView)]){
+        if (type == ZYLoginRequestSucc){
             [strongSelf.navigationController dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"页面消失");
             }];
@@ -36,18 +36,13 @@
         else {
             //Handle the data;
         }
-        
-                        }
-                       block:^(id errorMessage) {
-                           //失败信息
-                           if([errorMessage isKindOfClass:[NSString class]]) {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorMessage message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                               [alert show];
-                           }
-                       }
-                       block:^(NSString *networkMessage) {
-                           //网络请求失败
-                       }];
+    }
+                              errorBlock:^(NSInteger type, id errorMessage) {
+                                  
+                              }
+                            failureBlock:^(NSString *networkMessage) {
+                                
+                            }];
 }
 #pragma mark - UserAction
 - (IBAction)loginButtonClicked:(id)sender {

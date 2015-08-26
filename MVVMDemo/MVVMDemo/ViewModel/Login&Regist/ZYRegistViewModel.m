@@ -43,14 +43,14 @@
                  @"from_func" : @"1"};
     }
     else{
-        self.errorBlock (@"手机号码错误，请重新输入");
+        self.errorBlock (ZYRegistErr_PhoneNum_ERR,@"手机号码错误，请重新输入");
         return;
     }
     [sessionManager POST:actStr
                ReqParams:dict
                  success:^(NSURLSessionDataTask *task, id responseObject) {
                      [MBProgressHUD hideHUDForView:displayView animated:YES];
-                     self.returnBlock(@(ZYRegistSucc_SendSMS));
+                     self.returnBlock(ZYRegistSucc_SendRegist,@"验证码已发送，请查收");
                  }
                  failure:^(NSURLSessionDataTask *task, NSError *theError) {
                      [MBProgressHUD hideHUDForView:displayView animated:YES];
@@ -73,7 +73,7 @@
                     @"is_select" : @"1"};
     }
     else {
-        self.errorBlock (@"发起请求参数有误，请检查");
+        self.errorBlock (ZYRegistErr_Request_ERR,@"发起请求参数有误，请检查");
         return;
     }
     [sessionManager POST:actStr
@@ -81,7 +81,7 @@
                  success:^(NSURLSessionDataTask *task, id responseObject) {
                      //处理数据
                      [MBProgressHUD hideAllHUDsForView:displayView animated:YES];
-                     self.returnBlock (@(ZYRegistSucc_SendRegist));
+                     self.returnBlock (ZYRegistSucc_SendRegist,@"发起请求成功");
                  }
                  failure:^(NSURLSessionDataTask *task, NSError *theError) {
                      //查找失败原因

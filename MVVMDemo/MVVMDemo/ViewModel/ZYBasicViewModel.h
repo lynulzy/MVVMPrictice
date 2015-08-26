@@ -17,7 +17,7 @@
  *
  *  @param processResult 返回的结果，可以是Dictionary或者是Array，这个数据在view中应该是可以直接使用的
  */
-typedef void (^ResultBlock) (id processResult);
+typedef void (^ResultBlock) (NSInteger type, id processResult);
 /**
  *  @author lzy, 15-08-22 16:08:29
  *
@@ -25,7 +25,7 @@ typedef void (^ResultBlock) (id processResult);
  *
  *  @param errorMessage 返回错误信息
  */
-typedef void (^ErrorBlock) (id errorMessage);
+typedef void (^ErrorBlock) (NSInteger type, id errorMessage);
 /**
  *  @author lzy, 15-08-22 16:08:40
  *
@@ -51,9 +51,9 @@ typedef void (^NetworkBlock) (AFNetworkReachabilityStatus networkStatus);
  *  @param theErrorBlock   返回数据有误
  *  @param theFailureBlock 网络状况
  */
-- (void)setBlock: (ResultBlock) theReturnBlock
-           block: (ErrorBlock) theErrorBlock
-           block: (FailureBlock) theFailureBlock;
+- (void)setBlockReturnBlock:(ResultBlock)theReturnBlock
+                 errorBlock:(ErrorBlock)theErrorBlock
+               failureBlock:(FailureBlock)theFailureBlock;
 
 - (void)networkState: (NetworkBlock) theNetWorkBlock
            serverURL:(NSString *) serverURL;
